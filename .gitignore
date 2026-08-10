@@ -1,0 +1,23 @@
+#1.Bỏ qua thư mục buid (Nơi chứa toàn bộ file biên dịch tạm và file binary)
+build/
+bin/
+
+#2. Bỏ qua các file object/binary do trình biên dịch C++ tạo ra
+*.o
+*.obj
+*.out
+*.a
+*.so
+
+#3.Bỏ qua file thực thi chính sinh ra sau khi build 
+drp
+
+#4. Bỏ qua các file cấu hình tạm của IDE / Code Editor (VS Code, CLion...)
+.vscode/
+.idea/
+*.swap
+*.swo
+
+#5. Bỏ qua hệ thống file rác của hệ điều hành Linux
+.DS_Store
+

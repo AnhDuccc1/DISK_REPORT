@@ -29,7 +29,7 @@ drp .
 ```bash
 drp /path/to/directory
 ```
-##🧪 Kiểm thử (Testing)
+## 🧪 Kiểm thử (Testing)
 
 ### Biên dịch dự án 
 ```bash

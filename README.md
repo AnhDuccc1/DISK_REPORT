@@ -13,6 +13,7 @@ Chạy script cài đặt tự động để đưa lệnh `drp` vào hệ thốn
 ```bash
 chmod +x scripts/install.sh scripts/uninstall.sh
 ./scripts/install.sh
+```text
 
 ## 🧪 Kiểm thử (Testing)
 

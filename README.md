@@ -8,17 +8,20 @@ DRP là công cụ dòng lệnh (CLI) chạy trên hệ điều hành Linux dùn
 * **Build tool:** `CMake` (v3.10+)
 
 ## 🚀 Cài đặt (Installation)
+
 Chạy script cài đặt tự động để đưa lệnh `drp` vào hệ thống:
 
 ```bash
 chmod +x scripts/install.sh scripts/uninstall.sh
 ./scripts/install.sh
-```text
+```
 
 ## 🧪 Kiểm thử (Testing)
 
 Dự án đã tích hợp kịch bản kiểm thử tự động cho 10 kịch bản (TC01 – TC10):
 
 1. **Biên dịch dự án:**
+
    ```bash
    cmake -B build && cmake --build build
+   ```

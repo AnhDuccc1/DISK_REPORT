@@ -8,6 +8,7 @@ uint64_t DirectoryScanner::get_file_inode(const fs::path& file_path) {
     }
     return 0;
 }
+// Thiết lập tùy chọn bỏ qua các thư mục/file bị cấm quyền truy cập (Permission Denied)
 
 void DirectoryScanner::scan_directory(const fs::path& target_path) {
     std::error_code ec;
@@ -17,17 +18,18 @@ void DirectoryScanner::scan_directory(const fs::path& target_path) {
         return;
     }
 
-    auto options = fs::directory_options::none;
+    auto options = fs::directory_options::skip_permission_denied;
 
     // Map dùng để tích lũy dung lượng và số lượng file cho từng thư mục
     std::map<std::string, DirectoryEntry> dir_map;
 
+    // Vòng lặp duyệt đệ quy thư mục an toàn
     for (const auto& entry : fs::recursive_directory_iterator(target_path, options, ec)) {
+        // Nếu gặp lỗi lẻ trong quá trình lặp, xóa lỗi và bỏ qua item đó để không crash
         if (ec) {
             ec.clear();
             continue;
         }
-
         const auto& path = entry.path();
 
         // 1. Bỏ qua Symlink

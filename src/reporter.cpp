@@ -72,26 +72,30 @@ void Reporter::generate_csv_reports(const fs::path& target_path, const Directory
     std::string report_dir = get_report_dir_path(target_path);
     fs::create_directories(report_dir);
 
-    // 1. Xuất summary.csv
+// 1. Xuất summary.csv
     std::ofstream summary_file(report_dir + "summary.csv");
     if (summary_file.is_open()) {
         summary_file << "metric,value\n";
-        summary_file << "scan_path," << fs::absolute(target_path).string() << "\n";
-        summary_file << "total_files," << scanner.total_files << "\n";
-        summary_file << "total_directories," << scanner.total_directories << "\n";
+        // Lấy đường dẫn từ tham số target_dir truyền vào hàm (chuyển sang chuỗi bằng .string())
+        summary_file << "scan_path," << target_path.string() << "\n";
+        summary_file << "total_files," << scanner.files.size() << "\n";
+        summary_file << "total_directories," << scanner.directories.size() << "\n";
         summary_file << "total_size_bytes," << scanner.total_size << "\n";
-        
+
         if (!scanner.files.empty()) {
             summary_file << "largest_file," << scanner.files[0].name << "\n";
             summary_file << "largest_file_size_bytes," << scanner.files[0].size_bytes << "\n";
+            summary_file << "largest_file_size_human," << format_size(scanner.files[0].size_bytes) << "\n";
         }
+
         if (!scanner.directories.empty()) {
             summary_file << "largest_directory," << scanner.directories[0].name << "\n";
             summary_file << "largest_directory_size_bytes," << scanner.directories[0].size_bytes << "\n";
+            summary_file << "largest_directory_size_human," << format_size(scanner.directories[0].size_bytes) << "\n";
         }
+
         summary_file.close();
     }
-
     // 2. Xuất files.csv
     std::ofstream files_file(report_dir + "files.csv");
     if (files_file.is_open()) {

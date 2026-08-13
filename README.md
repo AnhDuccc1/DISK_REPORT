@@ -20,12 +20,12 @@ cd DISK_REPORT
 chmod +x scripts/install.sh scripts/uninstall.sh
 ./scripts/install.sh
 ```
-### Hướng dẫn sử dụng
-# Quét thư mục hiện tại
+## Hướng dẫn sử dụng
+### Quét thư mục hiện tại
 ```bash
 drp .
 ```
-# Quét một thư mục cụ thể
+### Quét một thư mục cụ thể
 ```bash
 drp /path/to/directory
 ```
